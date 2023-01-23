@@ -182,7 +182,8 @@ const embedButtons = () => {
   removeLoading();
 
   const positiveButton = document.createElement('button');
-  positiveButton.innerHTML = '🙂 Agree';
+  positiveButton.innerHTML = '👍';
+  positiveButton.title = 'Agree';
   positiveButton.style =
     'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700';
   positiveButton.addEventListener('click', (e) => {
@@ -190,7 +191,8 @@ const embedButtons = () => {
   });
 
   const disagreeButton = document.createElement('button');
-  disagreeButton.innerHTML = '👎 Disagree';
+  disagreeButton.innerHTML = '👎';
+  disagreeButton.title = 'Disagree';
   disagreeButton.style =
     'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; font-weight: 700; border-radius: 9999px; padding: 3px 8px; font-size: 12px; margin-left: 8px;';
   disagreeButton.addEventListener('click', (e) => {
@@ -198,7 +200,8 @@ const embedButtons = () => {
   });
 
   const funnyButton = document.createElement('button');
-  funnyButton.innerHTML = '🔥 Funny';
+  funnyButton.innerHTML = '😂';
+  funnyButton.title = 'Funny';
   funnyButton.style =
     'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700;  margin-left: 8px;';
   funnyButton.addEventListener('click', (e) => {
@@ -206,7 +209,8 @@ const embedButtons = () => {
   });
 
   const ideaButton = document.createElement('button');
-  ideaButton.innerHTML = '💡 Idea';
+  ideaButton.innerHTML = '💡';
+  ideaButton.title = 'Idea';
   ideaButton.style =
     'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700; margin-left: 8px;';
   ideaButton.addEventListener('click', (e) => {
@@ -214,7 +218,8 @@ const embedButtons = () => {
   });
 
   const questionButton = document.createElement('button');
-  questionButton.innerHTML = '❓ Question';
+  questionButton.innerHTML = '❓';
+  questionButton.title = 'Question';
   questionButton.style =
     'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700; margin-left: 8px;';
   questionButton.addEventListener('click', (e) => {
@@ -289,7 +294,8 @@ const embedLinkedinButtons = () => {
     }
 
     const positiveButton = document.createElement('div');
-    positiveButton.innerHTML = '🙂 Agree';
+    positiveButton.innerHTML = '👍';
+    positiveButton.title = 'Agree';
     positiveButton.style =
       'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 6px; font-size: 12px; font-weight: 700';
     positiveButton.addEventListener('click', (e) => {
@@ -299,7 +305,8 @@ const embedLinkedinButtons = () => {
     });
 
     const disagreeButton = document.createElement('div');
-    disagreeButton.innerHTML = '👎 Disagree';
+    disagreeButton.innerHTML = '👎';
+    disagreeButton.title = 'Disagree';
     disagreeButton.style =
       'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; font-weight: 700; border-radius: 9999px; padding: 3px 6px; font-size: 12px; margin-left: 6px;';
     disagreeButton.addEventListener('click', (e) => {
@@ -308,7 +315,8 @@ const embedLinkedinButtons = () => {
       sendServerRequest({ text, style: 'disagree' }, elem);
     });
     const funnyButton = document.createElement('div');
-    funnyButton.innerHTML = '🔥 Funny';
+    funnyButton.innerHTML = '😂';
+    funnyButton.title = 'Funny';
     funnyButton.style =
       'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 6px; font-size: 12px; font-weight: 700;  margin-left: 6px;';
     funnyButton.addEventListener('click', (e) => {
@@ -318,7 +326,8 @@ const embedLinkedinButtons = () => {
     });
 
     const ideaButton = document.createElement('div');
-    ideaButton.innerHTML = '💡 Idea';
+    ideaButton.innerHTML = '💡';
+    ideaButton.title = 'Idea';
     ideaButton.style =
       'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 6px; font-size: 12px; font-weight: 700; margin-left: 6px;';
     ideaButton.addEventListener('click', (e) => {
@@ -328,7 +337,8 @@ const embedLinkedinButtons = () => {
     });
 
     const questionButton = document.createElement('div');
-    questionButton.innerHTML = '❓ Question';
+    questionButton.innerHTML = '❓';
+    questionButton.title = 'Question';
     questionButton.style =
       'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 6px; font-size: 12px; font-weight: 700; margin-left: 6px;';
     questionButton.addEventListener('click', (e) => {
