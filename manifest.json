@@ -1,0 +1,33 @@
+{
+  "update_url": "https://clients2.google.com/service/update2/crx",
+
+  "name": "SociAI - AI Replies for Twitter & LinkedIn",
+  "description": "Create meaningful replies with AI-driven replies for Twitter and Linkedin.",
+  "version": "1.0.0",
+
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*", "https://www.linkedin.com/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage"],
+  "action": {
+    "default_title": "SociAI - AI Replies",
+    "default_icon": {
+      "16": "icons/16.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  }
+}
