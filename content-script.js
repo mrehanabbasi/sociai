@@ -1,5 +1,5 @@
 // Add OpenAI API Key here
-const OPENAI_API_KEY = `<YOUR_OPENAI_API_KEY>`;
+const OPENAI_API_KEY = ``;
 
 let lastText = null;
 let isLoading = false;
@@ -81,7 +81,7 @@ function findCurrentTweetText() {
   let modalText = document.querySelector('[aria-labelledby="modal-header"]');
   modalText = modalText
     ? modalText.querySelector('[data-testid="tweetText"]') ||
-      modalText.querySelector('[data-testid="tweet"]')
+    modalText.querySelector('[data-testid="tweet"]')
     : null;
   let textRaw = null;
 
@@ -105,9 +105,9 @@ function findCurrentTweetText() {
   // get text from text object
   const text = textRaw
     ? textRaw
-        .map((node) => node.data)
-        .join(' ')
-        .trim()
+      .map((node) => node.data)
+      .join(' ')
+      .trim()
     : '';
 
   return text;
@@ -190,6 +190,15 @@ const embedButtons = () => {
     sendServerRequest({ text, style: 'positive' });
   });
 
+  const supportiveButton = document.createElement('button');
+  supportiveButton.innerHTML = '🙌';
+  supportiveButton.title = 'Supportive';
+  supportiveButton.style =
+    'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700';
+  supportiveButton.addEventListener('click', (e) => {
+    sendServerRequest({ text, style: 'supportive' });
+  });
+
   const disagreeButton = document.createElement('button');
   disagreeButton.innerHTML = '👎';
   disagreeButton.title = 'Disagree';
@@ -208,6 +217,15 @@ const embedButtons = () => {
     sendServerRequest({ text, style: 'funny' });
   });
 
+  const sarcasmButton = document.createElement('button');
+  sarcasmButton.innerHTML = '🙃';
+  sarcasmButton.title = 'Sarcasm';
+  sarcasmButton.style =
+    'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700';
+  sarcasmButton.addEventListener('click', (e) => {
+    sendServerRequest({ text, style: 'sarcasm' });
+  });
+
   const ideaButton = document.createElement('button');
   ideaButton.innerHTML = '💡';
   ideaButton.title = 'Idea';
@@ -215,6 +233,33 @@ const embedButtons = () => {
     'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700; margin-left: 8px;';
   ideaButton.addEventListener('click', (e) => {
     sendServerRequest({ text, style: 'idea' });
+  });
+
+  const smartButton = document.createElement('button');
+  smartButton.innerHTML = '😎';
+  smartButton.title = 'Smart';
+  smartButton.style =
+    'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700';
+  smartButton.addEventListener('click', (e) => {
+    sendServerRequest({ text, style: 'smart' });
+  });
+
+  const condemnableButton = document.createElement('button');
+  condemnableButton.innerHTML = '🥹';
+  condemnableButton.title = 'Condemnable';
+  condemnableButton.style =
+    'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700';
+  condemnableButton.addEventListener('click', (e) => {
+    sendServerRequest({ text, style: 'condemnable' });
+  });
+
+  const aggressiveButton = document.createElement('button');
+  aggressiveButton.innerHTML = '😡';
+  aggressiveButton.title = 'Aggressive';
+  aggressiveButton.style =
+    'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700';
+  aggressiveButton.addEventListener('click', (e) => {
+    sendServerRequest({ text, style: 'aggressive' });
   });
 
   const questionButton = document.createElement('button');
@@ -238,9 +283,14 @@ const embedButtons = () => {
     'display: flex; align-items: center; height: 100%; margin-top: 8px;';
 
   buttons.appendChild(positiveButton);
+  buttons.appendChild(supportiveButton);
   buttons.appendChild(funnyButton);
+  buttons.appendChild(sarcasmButton);
   buttons.appendChild(ideaButton);
+  buttons.appendChild(smartButton);
+  buttons.appendChild(condemnableButton);
   buttons.appendChild(disagreeButton);
+  buttons.appendChild(aggressiveButton);
   buttons.appendChild(questionButton);
 
   // add buttons to tweet actions
