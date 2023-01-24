@@ -1,5 +1,5 @@
 // Add OpenAI API Key here
-const OPENAI_API_KEY = `<YOUR_OPENAI_API_KEY>`;
+const OPENAI_API_KEY = ``;
 
 let lastText = null;
 let isLoading = false;
@@ -81,7 +81,7 @@ function findCurrentTweetText() {
   let modalText = document.querySelector('[aria-labelledby="modal-header"]');
   modalText = modalText
     ? modalText.querySelector('[data-testid="tweetText"]') ||
-      modalText.querySelector('[data-testid="tweet"]')
+    modalText.querySelector('[data-testid="tweet"]')
     : null;
   let textRaw = null;
 
@@ -105,9 +105,9 @@ function findCurrentTweetText() {
   // get text from text object
   const text = textRaw
     ? textRaw
-        .map((node) => node.data)
-        .join(' ')
-        .trim()
+      .map((node) => node.data)
+      .join(' ')
+      .trim()
     : '';
 
   return text;
@@ -182,15 +182,26 @@ const embedButtons = () => {
   removeLoading();
 
   const positiveButton = document.createElement('button');
-  positiveButton.innerHTML = '🙂 Agree';
+  positiveButton.innerHTML = '👍';
+  positiveButton.title = 'Agree';
   positiveButton.style =
     'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700';
   positiveButton.addEventListener('click', (e) => {
     sendServerRequest({ text, style: 'positive' });
   });
 
+  const supportiveButton = document.createElement('button');
+  supportiveButton.innerHTML = '🙌';
+  supportiveButton.title = 'Supportive';
+  supportiveButton.style =
+    'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700';
+  supportiveButton.addEventListener('click', (e) => {
+    sendServerRequest({ text, style: 'supportive' });
+  });
+
   const disagreeButton = document.createElement('button');
-  disagreeButton.innerHTML = '👎 Disagree';
+  disagreeButton.innerHTML = '👎';
+  disagreeButton.title = 'Disagree';
   disagreeButton.style =
     'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; font-weight: 700; border-radius: 9999px; padding: 3px 8px; font-size: 12px; margin-left: 8px;';
   disagreeButton.addEventListener('click', (e) => {
@@ -198,23 +209,71 @@ const embedButtons = () => {
   });
 
   const funnyButton = document.createElement('button');
-  funnyButton.innerHTML = '🔥 Funny';
+  funnyButton.innerHTML = '😂';
+  funnyButton.title = 'Funny';
   funnyButton.style =
     'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700;  margin-left: 8px;';
   funnyButton.addEventListener('click', (e) => {
     sendServerRequest({ text, style: 'funny' });
   });
 
+  const sarcasmButton = document.createElement('button');
+  sarcasmButton.innerHTML = '🙃';
+  sarcasmButton.title = 'Sarcasm';
+  sarcasmButton.style =
+    'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700';
+  sarcasmButton.addEventListener('click', (e) => {
+    sendServerRequest({ text, style: 'sarcasm' });
+  });
+
   const ideaButton = document.createElement('button');
-  ideaButton.innerHTML = '💡 Idea';
+  ideaButton.innerHTML = '💡';
+  ideaButton.title = 'Idea';
   ideaButton.style =
     'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700; margin-left: 8px;';
   ideaButton.addEventListener('click', (e) => {
     sendServerRequest({ text, style: 'idea' });
   });
 
+  const smartButton = document.createElement('button');
+  smartButton.innerHTML = '😎';
+  smartButton.title = 'Smart';
+  smartButton.style =
+    'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700';
+  smartButton.addEventListener('click', (e) => {
+    sendServerRequest({ text, style: 'smart' });
+  });
+
+  const amazeButton = document.createElement('button');
+  amazeButton.innerHTML = '😮';
+  amazeButton.title = 'Amaze';
+  amazeButton.style =
+    'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700';
+  amazeButton.addEventListener('click', (e) => {
+    sendServerRequest({ text, style: 'Surprise' });
+  });
+
+  const condemnableButton = document.createElement('button');
+  condemnableButton.innerHTML = '🥹';
+  condemnableButton.title = 'Condemnable';
+  condemnableButton.style =
+    'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700';
+  condemnableButton.addEventListener('click', (e) => {
+    sendServerRequest({ text, style: 'condemnable' });
+  });
+
+  const aggressiveButton = document.createElement('button');
+  aggressiveButton.innerHTML = '😡';
+  aggressiveButton.title = 'Aggressive';
+  aggressiveButton.style =
+    'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700';
+  aggressiveButton.addEventListener('click', (e) => {
+    sendServerRequest({ text, style: 'angry' });
+  });
+
   const questionButton = document.createElement('button');
-  questionButton.innerHTML = '❓ Question';
+  questionButton.innerHTML = '❓';
+  questionButton.title = 'Question';
   questionButton.style =
     'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 8px; font-size: 12px; font-weight: 700; margin-left: 8px;';
   questionButton.addEventListener('click', (e) => {
@@ -233,9 +292,15 @@ const embedButtons = () => {
     'display: flex; align-items: center; height: 100%; margin-top: 8px;';
 
   buttons.appendChild(positiveButton);
+  buttons.appendChild(supportiveButton);
   buttons.appendChild(funnyButton);
+  buttons.appendChild(sarcasmButton);
   buttons.appendChild(ideaButton);
+  buttons.appendChild(smartButton);
+  buttons.appendChild(amazeButton);
+  buttons.appendChild(condemnableButton);
   buttons.appendChild(disagreeButton);
+  buttons.appendChild(aggressiveButton);
   buttons.appendChild(questionButton);
 
   // add buttons to tweet actions
@@ -289,7 +354,8 @@ const embedLinkedinButtons = () => {
     }
 
     const positiveButton = document.createElement('div');
-    positiveButton.innerHTML = '🙂 Agree';
+    positiveButton.innerHTML = '👍';
+    positiveButton.title = 'Agree';
     positiveButton.style =
       'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 6px; font-size: 12px; font-weight: 700';
     positiveButton.addEventListener('click', (e) => {
@@ -298,8 +364,20 @@ const embedLinkedinButtons = () => {
       sendServerRequest({ text, style: 'positive' }, elem);
     });
 
+    const supportiveButton = document.createElement('div');
+    supportiveButton.innerHTML = '🙌';
+    supportiveButton.title = 'Supportive';
+    supportiveButton.style =
+      'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 6px; font-size: 12px; font-weight: 700';
+    supportiveButton.addEventListener('click', (e) => {
+      const text = getLinkedInText(e.target);
+      const elem = b.querySelector('.ql-editor');
+      sendServerRequest({ text, style: 'supportive' }, elem);
+    });
+
     const disagreeButton = document.createElement('div');
-    disagreeButton.innerHTML = '👎 Disagree';
+    disagreeButton.innerHTML = '👎';
+    disagreeButton.title = 'Disagree';
     disagreeButton.style =
       'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; font-weight: 700; border-radius: 9999px; padding: 3px 6px; font-size: 12px; margin-left: 6px;';
     disagreeButton.addEventListener('click', (e) => {
@@ -307,8 +385,10 @@ const embedLinkedinButtons = () => {
       const elem = b.querySelector('.ql-editor');
       sendServerRequest({ text, style: 'disagree' }, elem);
     });
+
     const funnyButton = document.createElement('div');
-    funnyButton.innerHTML = '🔥 Funny';
+    funnyButton.innerHTML = '😂';
+    funnyButton.title = 'Funny';
     funnyButton.style =
       'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 6px; font-size: 12px; font-weight: 700;  margin-left: 6px;';
     funnyButton.addEventListener('click', (e) => {
@@ -317,8 +397,20 @@ const embedLinkedinButtons = () => {
       sendServerRequest({ text, style: 'funny' }, elem);
     });
 
+    const sarcasmButton = document.createElement('div');
+    sarcasmButton.innerHTML = '🙃';
+    sarcasmButton.title = 'Sarcasm';
+    sarcasmButton.style =
+      'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 6px; font-size: 12px; font-weight: 700;  margin-left: 6px;';
+    sarcasmButton.addEventListener('click', (e) => {
+      const text = getLinkedInText(e.target);
+      const elem = b.querySelector('.ql-editor');
+      sendServerRequest({ text, style: 'sarcasm' }, elem);
+    });
+
     const ideaButton = document.createElement('div');
-    ideaButton.innerHTML = '💡 Idea';
+    ideaButton.innerHTML = '💡';
+    ideaButton.title = 'Idea';
     ideaButton.style =
       'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 6px; font-size: 12px; font-weight: 700; margin-left: 6px;';
     ideaButton.addEventListener('click', (e) => {
@@ -327,8 +419,53 @@ const embedLinkedinButtons = () => {
       sendServerRequest({ text, style: 'idea' }, elem);
     });
 
+    const smartButton = document.createElement('div');
+    smartButton.innerHTML = '😎';
+    smartButton.title = 'Smart';
+    smartButton.style =
+      'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 6px; font-size: 12px; font-weight: 700; margin-left: 6px;';
+    smartButton.addEventListener('click', (e) => {
+      const text = getLinkedInText(e.target);
+      const elem = b.querySelector('.ql-editor');
+      sendServerRequest({ text, style: 'smart' }, elem);
+    });
+
+    const amazeButton = document.createElement('div');
+    amazeButton.innerHTML = '😮';
+    amazeButton.title = 'Amaze';
+    amazeButton.style =
+      'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 6px; font-size: 12px; font-weight: 700; margin-left: 6px;';
+    amazeButton.addEventListener('click', (e) => {
+      const text = getLinkedInText(e.target);
+      const elem = b.querySelector('.ql-editor');
+      sendServerRequest({ text, style: 'surprise' }, elem);
+    });
+
+    const condemnableButton = document.createElement('div');
+    condemnableButton.innerHTML = '🥹';
+    condemnableButton.title = 'Condemnable';
+    condemnableButton.style =
+      'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 6px; font-size: 12px; font-weight: 700; margin-left: 6px;';
+    condemnableButton.addEventListener('click', (e) => {
+      const text = getLinkedInText(e.target);
+      const elem = b.querySelector('.ql-editor');
+      sendServerRequest({ text, style: 'condemnable' }, elem);
+    });
+
+    const aggressiveButton = document.createElement('div');
+    aggressiveButton.innerHTML = '😡';
+    aggressiveButton.title = 'Aggressive';
+    aggressiveButton.style =
+      'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 6px; font-size: 12px; font-weight: 700; margin-left: 6px;';
+    aggressiveButton.addEventListener('click', (e) => {
+      const text = getLinkedInText(e.target);
+      const elem = b.querySelector('.ql-editor');
+      sendServerRequest({ text, style: 'angry' }, elem);
+    });
+
     const questionButton = document.createElement('div');
-    questionButton.innerHTML = '❓ Question';
+    questionButton.innerHTML = '❓';
+    questionButton.title = 'Question';
     questionButton.style =
       'cursor: pointer; color: #1d9bf0; border: 1px solid #1d9bf0; background: transparent; border-radius: 9999px; padding: 3px 6px; font-size: 12px; font-weight: 700; margin-left: 6px;';
     questionButton.addEventListener('click', (e) => {
@@ -341,9 +478,15 @@ const embedLinkedinButtons = () => {
     buttons.id = 'SOCIAI_BUTTONS';
     buttons.className = 'SOCIAI_BUTTONS';
     buttons.appendChild(positiveButton);
-    buttons.appendChild(disagreeButton);
+    buttons.appendChild(supportiveButton);
     buttons.appendChild(funnyButton);
+    buttons.appendChild(sarcasmButton);
     buttons.appendChild(ideaButton);
+    buttons.appendChild(smartButton);
+    buttons.appendChild(amazeButton);
+    buttons.appendChild(condemnableButton);
+    buttons.appendChild(disagreeButton);
+    buttons.appendChild(aggressiveButton);
     buttons.appendChild(questionButton);
 
     buttons.style =
